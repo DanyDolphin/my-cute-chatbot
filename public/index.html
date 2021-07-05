@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <section class="layout">
+    <article id="chatbot">
+      <h1>My cute chatbot</h1>
+      <div class="chat-container">
+        <span class="message message-client">
+          Hola mundo
+        </span>
+        <span class="message message-server">
+          Hola crayola
+        </span>
+      </div>
+      <input-box @send="sendMessage"/>
+    </article>
+  </section>
+  <script>
+    const Chatbot = {
+      data: () => ({
+        counter: 5
+      }),
+      methods: {
+        sendMessage: message => {
+          alert(message)
+        }
+      }
+    }
+    const app = Vue.createApp(Chatbot)
+
+    app.component('input-box', {
+      emits: ['send'],
+      template: `
+        <div class="input-box">
+          <input 
+            type="text" 
+            autocomplete="off"
+            placeholder="Write a message"
+            v-model="value"
+            />
+          <button @click="$emit('send', value)">
+            Send
+          </button>
+        </div>
+      `,
+      data: () => ({
+        value: '',
+      })
+    })
+
+    app.mount('#chatbot')
+  </script>
+</body>
+</html>
