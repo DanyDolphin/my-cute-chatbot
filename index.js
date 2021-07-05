@@ -1,6 +1,5 @@
 // express
 const express = require('express')
-const morgan = require('morgan')
 const path = require('path')
 const http = require('http')
 
@@ -12,6 +11,8 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
 if (process.env.NODE_ENV === 'development') {
+  const morgan = require('morgan')
+  
   app.use(morgan('tiny'))
   require('dotenv').config()
 }
