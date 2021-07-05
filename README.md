@@ -28,7 +28,7 @@ Si te encuentras en un ambiente de desarrollo, corre el siguiente comando:
 ```
 npm run dev
 ```
-Luego dirígete a `localhost:{PORT}/` (donde PORT es el puerto que elegiste para el servidor de Express). Verás la interfáz para comunicarte con tu chatbot.
+Luego ingresa la url `https://localhost:{PORT}/` en tu navegador (donde PORT es el puerto que elegiste para el servidor de Express). Verás la interfáz para comunicarte con tu chatbot.
 Si te encuentras en un ambiente de producción, corre el siguiente comando:
 ```
 npm start
