@@ -32,7 +32,7 @@ npm install
 1. Inicia la app web (proyecto de Vue):
 ```
 cd front/
-npm run dev
+npm run serve
 ```
 2. Inicia el servidor de la app web:
 ```
