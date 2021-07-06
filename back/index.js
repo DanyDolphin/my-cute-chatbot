@@ -8,13 +8,17 @@ const server = http.createServer(app)
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'public')))
 
 if (process.env.NODE_ENV === 'development') {
   const morgan = require('morgan')
+  const cors = require('cors')
   
   app.use(morgan('tiny'))
   require('dotenv').config()
+
+  app.use(cors({
+    origin: ['http://localhost:8080', 'https://datoscuriososdeanimalitos-mbwr.web.app/']
+  }))
 }
 
 // dialogflow
@@ -52,7 +56,12 @@ async function queryChatbot(message) {
 // socket.io
 const { Server } = require('socket.io')
 
-io = new Server(server)
+io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:8080", "https://datoscuriososdeanimalitos-mbwr.web.app/"],
+    methods: ["GET", "POST"]
+  }
+})
 
 io.on('connection', socket => {
   io.emit('chat message', process.env.CONNECTION_MESSAGE)

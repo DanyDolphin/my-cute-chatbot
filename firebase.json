@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": "front/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/socket.io/**",
+        "run": {
+          "serviceId": "app"
+        }
+      },{
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
